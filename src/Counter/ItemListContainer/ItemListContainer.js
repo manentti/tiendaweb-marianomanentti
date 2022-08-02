@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { getProducts } from "../asyncMock"
-
+import ItemList from "../../itemList/itemList"
 const ItemListContainer = (props) => {
    const [products,setProducts] = useState([])
    const [loading, setLoading] = useState(true)
@@ -24,14 +24,15 @@ const ItemListContainer = (props) => {
    }
 
 
-    const productosTransformados = products.map(product =>(
-      <li key={product.id}>{product.name}</li>
-    ))
+     //const productosTransformados = products.map(product =>(
+       //<li key={product.id}>{product.name}{product.price}{product.categoria}</li>
+     //))
     
      return (
         <>
           <h1>{props.greeting}</h1>
-          <ul>{productosTransformados}</ul>
+          
+          <ItemList products={products}/>
         </>
 
      )

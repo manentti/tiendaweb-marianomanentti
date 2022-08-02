@@ -14,6 +14,7 @@ function App() {
         <Navbar/>
         <Counter show={show} stock={10} initial={1}/>
         <ItemListContainer greeting="HOLA CODER"/>
+        
         <img src={logo} className="App-logo" alt="logo" />
         
       </header>
