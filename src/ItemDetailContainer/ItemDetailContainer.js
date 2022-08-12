@@ -1,38 +1,27 @@
+import { useState, useEffect } from "react";
+import { getProductById } from "../Counter/asyncMock";
+import ItemDetail from "../ItemDetail/ItemDetail";
+import {useParams} from "react"
 
-import ItemCount from '../ItemCount/ItemCount'
 
-const ItemDetail = ({ name}) => {
 
-    const handleOnAdd = (quantity) => {
-        console.log('agregue al carrito: ', quantity)
-    }
+const ItemDetailContainer = () => {
+    const [product, setproduct] = useState({})
 
-    return (
-        <article className="CardItem">
-            <header className="Header">
-                <h2 className="ItemHeader">
-                    {name}
-                </h2>
-            </header>
-            <picture>
-                <img src={img} alt={name} className="ItemImg"/>
-            </picture>
-            <section>
-                <p className="Info">
-                    Categoria: {categoria}
-                </p>
-                <p className="Info">
-                    Descripción: {description}
-                </p>
-                <p className="Info">
-                    Precio: {price}
-                </p>
-            </section>           
-            <footer className='ItemFooter'>
-                <ItemCount stock={stock} onAdd={handleOnAdd} />
-            </footer>
-        </article>
+    const {productId} = useParams()
+
+    useEffect(() => {
+        getProductById(productId).then(response =>{
+            setproduct(response)
+        })
+    },[productId])
+    return(
+        <div className="ItemDetailContainer">
+            <ItemDetail {...product}/>
+        </div>
     )
 }
 
-export default ItemDetail
+export default ItemDetailContainer
+
+

@@ -1,22 +1,42 @@
 import { useState, useEffect } from "react"
-import { getProducts } from "../asyncMock"
+import { getProductById, getProducts, getProductsByCategory, setProductsByCtegory} from "../asyncMock"
 import ItemList from "../../itemList/itemList"
+import { useParams} from "react"
+
+
 const ItemListContainer = (props) => {
    const [products,setProducts] = useState([])
    const [loading, setLoading] = useState(true)
 
-    useEffect(() =>{
-       getProducts().then(response => {
-         setProducts(response)
-       }).catch(error =>{
-         console.log(error)
-       }).finally(()=>{
-         setLoading(false)
-       })
+   const {categoryId} = useParams
+
+   useEffect(() =>{
+    const asncfuntion = categoryId? getProductsByCategory : getProducts
+    
+    asyncFunction(categoryId).then(response => {
+      setProducts(response)
+    }).catch(error =>{
+      console.log(error)
+    }).finally(() => {
+      setLoading(false)
+    })
+   
 
 
 
-    },[])
+
+    //useEffect(() =>{
+      // getProducts().then(response => {
+        // setProducts(response)
+       //}).catch(error =>{
+        // console.log(error)
+      // }).finally(()=>{
+         //setLoading(false)
+       //})
+
+
+
+    },[categoryId])
 
 
    if(loading){
