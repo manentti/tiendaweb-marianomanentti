@@ -1,19 +1,17 @@
 import React from "react"
-import Button from "../Counter/Button/Button"
+//import Button from "../Counter/Button/Button"
+import { Link } from "react-router-dom"
 const Navbar = () =>{
     return(
         <nav className="Navbar">
             
-            <nav>
+            <Link>
                 e-commerce
-            </nav>
-            <div>
-                <Button label="celular"color="red" handleClick={() => console.log("celular")}/>
-                <Button label="mazo" color="blue" handleClick={() => console.log ("mazo")}/>
-                <Button label="tipos" color ="green"handleClick={() => console.log ("topos")}/>
-                <Button label="meta"/>
-               
-                
+            </Link>
+            <div className="Categoris">
+                <Link to="/category/comun" className="option">dragon</Link>
+                <Link to="/category/poco comun" className="option">dragon</Link>
+                <Link to="/category/mitica" className="option">dragon</Link>
             </div>
         </nav>
     )

@@ -1,6 +1,6 @@
 import ItemCount from "../Counter/ItemCount/ItemCount";
 
-const ItemDetail = ({id, name, category, img, price, strok, description}) => {
+const ItemDetail = ({id, name, categoria, img, price, stock, description}) => {
     const handleOnAdd = (quantity) => {
         console.log("agregue al carrito", quantity)
     }
@@ -8,7 +8,7 @@ const ItemDetail = ({id, name, category, img, price, strok, description}) => {
     return (
         <article className="CardItem">
             <header className="Header">
-                <h1>{id}{category}{strok}</h1>
+                <h1>{id}{categoria}{stock}</h1>
                 <h2 className="ItemHeader">
                     {name}
                 </h2>
